@@ -29,7 +29,7 @@ namespace OOP
         public void deleteTableTest(string name, int row)
         {
             var data = Database.getInstants();
-            var index = (Product)Convert.ChangeType(data.productTable[row], typeof(Product));
+            var index = (Product)Convert.ChangeType(data.selectTable(Database.PRODUCT)[row], typeof(Product));
             data.deleteTable<Product>(name, index);
         }
 
@@ -58,9 +58,9 @@ namespace OOP
             var data = Database.getInstants();
             if (name.Equals("productTable"))
             {
-                for(int i = 0; i < data.productTable.Count; i++)
+                for(int i = 0; i < data.selectTable(Database.PRODUCT).Count; i++)
                 {
-                    Product product = (Product)Convert.ChangeType(data.productTable[i], typeof(Product));
+                    Product product = (Product)Convert.ChangeType(data.selectTable(Database.PRODUCT)[i], typeof(Product));
                     Console.WriteLine("id: " + product.getId());
                     Console.WriteLine("name: " + product.getName());
                     Console.WriteLine("categoryId: " + product.getCategory());
@@ -68,18 +68,18 @@ namespace OOP
             }
             if (name.Equals("categoryTable"))
             {
-                for (int i = 0; i < data.categoryTable.Count; i++)
+                for (int i = 0; i < data.selectTable(Database.CATEGORY).Count; i++)
                 {
-                    Category cate = (Category)Convert.ChangeType(data.categoryTable[i], typeof(Category));
+                    Category cate = (Category)Convert.ChangeType(data.selectTable(Database.CATEGORY)[i], typeof(Category));
                     Console.WriteLine("id: " + cate.getId());
                     Console.WriteLine("name: " + cate.getName());
                 }
             }
             if (name.Equals("accessoryTable"))
             {
-                for (int i = 0; i < data.accessoryTable.Count; i++)
+                for (int i = 0; i < data.selectTable(Database.ACCESS).Count; i++)
                 {
-                    Accessory acc = (Accessory)Convert.ChangeType(data.accessoryTable[i], typeof(Accessory));
+                    Accessory acc = (Accessory)Convert.ChangeType(data.selectTable(Database.ACCESS)[i], typeof(Accessory));
                     Console.WriteLine("id: " + acc.getId());
                     Console.WriteLine("name: " + acc.getName());
                 }

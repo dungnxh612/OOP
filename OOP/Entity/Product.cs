@@ -4,37 +4,17 @@ using System.Text;
 
 namespace OOP
 {
-    class Product
+    class Product : BaseRow,IEntity
     {
-        private int id;
-        private string name;
         private int category;
 
-        public Product(int id, string name, int category)
+        public Product(int num, string str, int category)
         {
-            this.id = id;
-            this.name = name;
+            id = num;
+            name = str;
             this.category = category;
         }
 
-        public int getId()
-        {
-            return id;
-        }
-
-        public void setId(int id)
-        {
-            this.id = id;
-        }
-        public string getName()
-        {
-            return name;
-        }
-
-        public void setName(string name)
-        {
-            this.name = name;
-        }
         public int getCategory()
         {
             return category;

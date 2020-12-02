@@ -4,35 +4,12 @@ using System.Text;
 
 namespace OOP.Entity
 {
-    class Category
+    class Category : BaseRow
     {
-        private int id;
-        private string name;
-
-        public Category(int id, string name)
+        public Category(int num, string str)
         {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId()
-        {
-            return id;
-        }
-
-        public void setId(int id)
-        {
-            this.id = id;
-        }
-
-        public string getName()
-        {
-            return name;
-        }
-
-        public void setName(string name)
-        {
-            this.name = name;
+            id = num;
+            name = str;
         }
 
     }

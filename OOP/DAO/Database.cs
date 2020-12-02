@@ -8,10 +8,14 @@ namespace OOP
 {
     class Database
     {
-        public static Database _instance;
-        public ArrayList productTable = new ArrayList();
-        public ArrayList categoryTable = new ArrayList();
-        public ArrayList accessoryTable = new ArrayList();
+        private static Database _instance;
+        private ArrayList productTable = new ArrayList();
+        private ArrayList categoryTable = new ArrayList();
+        private ArrayList accessoryTable = new ArrayList();
+        public const string PRODUCT = "productTable";
+        public const string CATEGORY = "categoryTable";
+        public const string ACCESS = "accessoryTable";
+
 
         public static Database getInstants()
         {
@@ -23,19 +27,19 @@ namespace OOP
         }
         public int insertTable<T>(string name, T row)
         {
-            if (name.Equals("productTable"))
+            if (name.Equals(PRODUCT))
             {
                 Product product = (Product)Convert.ChangeType(row, typeof(Product));
                 productTable.Add(product);               
                 return 1;
             }
-            if (name.Equals("categoryTable"))
+            if (name.Equals(CATEGORY))
             {
                 Category cate = (Category)Convert.ChangeType(row, typeof(Category));
                 categoryTable.Add(cate);
                 return 1;
             }
-            if (name.Equals("accessoryTable"))
+            if (name.Equals(ACCESS))
             {
                 Accessory acc = (Accessory)Convert.ChangeType(row, typeof(Accessory));
                 accessoryTable.Add(acc);
@@ -47,15 +51,15 @@ namespace OOP
 
         public ArrayList selectTable(string name)
         {
-            if (name.Equals("productTable"))
+            if (name.Equals(PRODUCT))
             {
                 return productTable;
             }
-            if (name.Equals("categoryTable"))
+            if (name.Equals(CATEGORY))
             {
                 return productTable;
             }
-            if (name.Equals("accessoryTable"))
+            if (name.Equals(ACCESS))
             {
                 return productTable;
             }
@@ -64,7 +68,7 @@ namespace OOP
 
         public int updateTable<T>(string name, T row)
         {
-            if (name.Equals("productTable"))
+            if (name.Equals(PRODUCT))
             {
                 Product product = (Product)Convert.ChangeType(row, typeof(Product));
                 for(int i = 0; i < productTable.Count; i++)
@@ -73,11 +77,12 @@ namespace OOP
                     if (product.getId() == proTmp.getId())
                     {
                         productTable[i] = proTmp;
+                        return 1;
                     }
                 }
-                return 1;
+
             }
-            if (name.Equals("categoryTable"))
+            if (name.Equals(CATEGORY))
             {
                 Category category = (Category)Convert.ChangeType(row, typeof(Category));
                 for (int i = 0; i < categoryTable.Count; i++)
@@ -86,11 +91,12 @@ namespace OOP
                     if (category.getId() == cateTmp.getId())
                     {
                         categoryTable[i] = cateTmp;
+                        return 1;
                     }
                 }
-                return 1;
+
             }
-            if (name.Equals("accessoryTable"))
+            if (name.Equals(ACCESS))
             {
                 Accessory accessory = (Accessory)Convert.ChangeType(row, typeof(Accessory));
                 for (int i = 0; i < accessoryTable.Count; i++)
@@ -99,28 +105,27 @@ namespace OOP
                     if (accessory.getId() == accTmp.getId())
                     {
                         accessoryTable[i] = accTmp;
+                        return 1;
                     }
                 }
-                return 1;
             }
-
             return 0;
         }
 
         public bool deleteTable<T>(string name, T row)
         {
             
-            if (name.Equals("productTable"))
+            if (name.Equals(PRODUCT))
             {
                 productTable.Remove(row);
                 return true;
             }
-            if (name.Equals("categoryTable"))
+            if (name.Equals(CATEGORY))
             {
                 categoryTable.Remove(row);
                 return true;
             }
-            if (name.Equals("accessoryTable"))
+            if (name.Equals(ACCESS))
             {
                 accessoryTable.Remove(row);
                 return true;
@@ -130,22 +135,22 @@ namespace OOP
 
         public void truncateTable(string name)
         {
-            if (name.Equals("productTable"))
+            if (name.Equals(PRODUCT))
             {
                 productTable.Clear();
             }
-            if (name.Equals("categoryTable"))
+            if (name.Equals(CATEGORY))
             {
                 productTable.Clear();
             }
-            if (name.Equals("accessoryTable"))
+            if (name.Equals(ACCESS))
             {
                 productTable.Clear();
             }
         }
         public int updateTable<T>(string name, T row, int id)
         {
-            if (name.Equals("productTable"))
+            if (name.Equals(PRODUCT))
             {
                 for(int i =0; i<productTable.Count; i++)
                 {
@@ -153,10 +158,11 @@ namespace OOP
                     if (product.getId() == id)
                     {
                         productTable[i] = row;
+                        return 1;
                     }
                 }
             }
-            if (name.Equals("categoryTable"))
+            if (name.Equals(CATEGORY))
             {
                 for (int i = 0; i < categoryTable.Count; i++)
                 {
@@ -164,10 +170,11 @@ namespace OOP
                     if (cate.getId() == id)
                     {
                         categoryTable[i] = row;
+                        return 1;
                     }
                 }
             }
-            if (name.Equals("accessoryTable"))
+            if (name.Equals(ACCESS))
             {
                 for (int i = 0; i < accessoryTable.Count; i++)
                 {
@@ -175,6 +182,7 @@ namespace OOP
                     if (acc.getId() == id)
                     {
                         accessoryTable[i] = row;
+                        return 1;
                     }
                 }
             }

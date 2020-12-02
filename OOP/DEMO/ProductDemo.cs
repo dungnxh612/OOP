@@ -10,7 +10,7 @@ namespace OOP.DEMO
         {
             var data = Database.getInstants();
             Product prod = new Product(id, name, categoryId);
-            data.insertTable<Product>("productTable", prod);
+            data.insertTable<Product>(Database.PRODUCT, prod);
         }
 
         public void printProduct(Product pro)
